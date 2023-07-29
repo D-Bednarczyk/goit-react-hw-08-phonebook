@@ -1,9 +1,8 @@
 import css from './Form.module.css';
-import { addContact } from '../../redux/operations';
+import { addContact } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/selectors';
-import { nanoid } from 'nanoid';
+import { selectContacts } from '../../redux/contacts/selectors';
 
 export const Form = () => {
   const dispatch = useDispatch();
@@ -12,17 +11,14 @@ export const Form = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
+    const contact = {
+      name: event.target.elements.name.value,
+      number: event.target.elements.number.value || '',
+    };
 
     if (ContactsArray.map(el => el.name).includes(form.elements.name.value))
       alert(`${form.elements.name.value} is already in contacts`);
-    else
-      dispatch(
-        addContact({
-          id: nanoid(),
-          name: form.name.value,
-          phone: form.number.value,
-        })
-      );
+    else dispatch(addContact(contact));
     form.reset();
   };
 

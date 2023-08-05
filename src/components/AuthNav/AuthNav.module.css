@@ -3,11 +3,7 @@
   margin-right: 20px;
   text-decoration: none;
   font-size: 20px;
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-top: 20px;
 }
 
 .link.active {
